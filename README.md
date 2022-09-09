@@ -21,10 +21,12 @@ application.
 8. Generics
 9. Classes
 
-As we go through this lesson, code along with the given examples in the `practice.ts`
-file you created in the previous lab. TypeScript syntax can take some time getting
-used to when you're already familiar with vanilla JavaScript. Typing things 
-out as you learn them can help solidify the concepts. 
+As we go through this lesson, code along with the given examples in the 
+`react-ts-typescript-lab-2` directory we configured in the previous lab. 
+Create a new file in the `src` folder called `practice.ts` and code along
+in there. TypeScript syntax can take some time getting used to when you're 
+already familiar with vanilla JavaScript. Typing things out as you learn them 
+can help solidify the concepts. 
 
 ## Simple Types
 
