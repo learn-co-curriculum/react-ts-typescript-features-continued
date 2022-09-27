@@ -22,12 +22,12 @@ application.
 9. Generics
 10. Classes
 
-As we go through this lesson, code along with the given examples in the 
-`react-ts-typescript-lab-2` directory we configured in the previous lab. 
-Create a new file in the `src` folder called `practice.ts` and code along
-in there. TypeScript syntax can take some time getting used to when you're 
-already familiar with vanilla JavaScript. Writing things out as you learn them 
-can help solidify the concepts. 
+As we go through this lesson, code along with the given examples in the
+`react-ts-typescript-lab-2` directory we configured in the previous lab. Create
+a new file in the `src` folder called `practice.ts` and code along in there.
+TypeScript syntax can take some time getting used to when you're already
+familiar with vanilla JavaScript. Writing things out as you learn them can help
+solidify the concepts.
 
 ## Simple Types
 
@@ -42,8 +42,8 @@ including the following primitive types you might have seen in other languages:
    `false`
 
 The type of a variable is specified by adding ` : <type>` after the variable
-declaration. The typed variables can then be given values, as long as they 
-match the declared type. Here are a couple of examples:
+declaration. The typed variables can then be given values, as long as they match
+the declared type. Here are a couple of examples:
 
 ```typescript
 let name: string 
@@ -55,9 +55,9 @@ age = 12
 studentFlag = true
 ```
 
-Typing a variable and defining the variable's value separately, as in the 
-example above, is occasionally desired. Other times, it may feel like a lot of 
-redundant code. 
+Typing a variable and defining the variable's value separately, as in the
+example above, is occasionally desired. Other times, it may feel like a lot of
+redundant code.
 
 In such cases, we can type a variable _and_ define it at the same time:
 
@@ -85,21 +85,20 @@ error TS2322: Type 'string' is not assignable to type 'number'.
 ```
 
 Additionally, any IDE that supports TypeScript may give you an error message in
-the editor as soon as it sees code that is not consistent with an assigned
-type:
+the editor as soon as it sees code that is not consistent with an assigned type:
 
 ![TypeScript wrong type](https://curriculum-content.s3.amazonaws.com/java-mod-8/ts-wrong-type.png)
 
 ## Object Types
 
-While simple typing is easy enough for variables of a single primitive type, what
-about more complex values, such as objects or arrays? 
+While simple typing is easy enough for variables of a single primitive type,
+what about more complex values, such as objects or arrays?
 
-We can specify that a given variable can have a more complex "shape" with TypeScript
-as well. For example, we could have a `person` object that must have inside it all 
-three types we worked with earlier. We would use a similar syntax of ` <variable> : <type>`,
-but instead of a singular type, we would shape out the object and type its individual
-properties, like so: 
+We can specify that a given variable can have a more complex "shape" with
+TypeScript as well. For example, we could have a `person` object that must have
+inside it all three types we worked with earlier. We would use a similar syntax
+of ` <variable>: <type>`, but instead of a singular type, we would shape out the
+object and type its individual properties, like so:
 
 ```typescript
 let person: {
@@ -119,7 +118,7 @@ person = {
 };
 ```
 
-As we did earlier with simple typing, we can also type and set the value of 
+As we did earlier with simple typing, we can also type and set the value of
 objects at the same time. The syntax would look like:
 
 ```typescript
@@ -135,7 +134,7 @@ let person: {
 ```
 
 TypeScript will not only warn you if any of the fields are not of the right type
-as we saw earlier, it will also warn you if you're missing a required field. 
+as we saw earlier, it will also warn you if you're missing a required field.
 
 We already know the type of message we would get if we tried to set a value to
 the wrong type. Let's see what happens if we omit a required field:
@@ -161,9 +160,9 @@ error TS2741: Property 'studentFlag' is missing in type '{ age: number; name: st
     'studentFlag' is declared here.
 ```
 
-The error message `Property 'studentFlag' is missing in type '{ age: number; 
-name: string; }' but required in type '{ name: string; age: number; studentFlag: 
-boolean; }'` suggests that there might be a way to declare that an element of a 
+The error message `Property 'studentFlag' is missing in type '{ age: number;
+name: string; }' but required in type '{ name: string; age: number; studentFlag:
+boolean; }'` suggests that there might be a way to declare that an element of a
 complex type may be acceptable but not required.
 
 This is done by adding a `?` after the name of the variable. We can change the
@@ -177,22 +176,22 @@ let person: {
 };
 ```
 
-Now the `person` object we defined without the `studentFlag` property
-is actually valid.
+Now the `person` object we defined without the `studentFlag` property is
+actually valid.
 
-> **Bonus**: What happens you try to define the object with a property that is 
-> not included in the type declaration? Try it out and see what happens! 
+> **Bonus**: What happens you try to define the object with a property that is
+> not included in the type declaration? Try it out and see what happens!
 
-## Array Types 
+## Array Types
 
-What if we want to give our `person` object an optional property named 
-`favoriteThings` that holds an array of strings? How would we type that? 
+What if we want to give our `person` object an optional property named
+`favoriteThings` that holds an array of strings? How would we type that?
 
-Typing arrays follows the syntax `type[]` where `type` should be the type of 
-the elements in the array and `[]` indicates that it's an array. 
+Typing arrays follows the syntax `type[]` where `type` should be the type of the
+elements in the array and `[]` indicates that it's an array.
 
-In our case, we want an array of strings. We can update our `person` object 
-type declaration like so:
+In our case, we want an array of strings. We can update our `person` object type
+declaration like so:
 
 ```typescript
 let person: {
@@ -203,7 +202,7 @@ let person: {
 };
 ```
 
-Now our person can have an array of their favorite things: 
+Now our person can have an array of their favorite things:
 
 ```typescript
 person = {
@@ -213,16 +212,16 @@ person = {
 };
 ```
 
-Like other variables, array types aren't limited to the simple, primitive types. 
-For example, if we wanted an array of objects that are all shaped the same, we could 
-type the properties of the object as we did earlier and use it as the type in the 
-`type[]` syntax:
+Like other variables, array types aren't limited to the simple, primitive types.
+For example, if we wanted an array of objects that are all shaped the same, we
+could type the properties of the object as we did earlier and use it as the type
+in the `type[]` syntax:
 
 ```typescript
 let ratings: { stars: number, blurb: string }[]
 ```
 
-This would allow an array like the following: 
+This would allow an array like the following:
 
 ```js
 ratings = [
@@ -238,10 +237,10 @@ ratings = [
 
 ## Interface
 
-Going back to our `person` object, what if we wanted to have another variable 
-with the exact same shape as `person`? Based on our current setup, we would 
-have to give it a new name and then specify its exact shape using the same 
-code as we did for `person`. For example:
+Going back to our `person` object, what if we wanted to have another variable
+with the exact same shape as `person`? Based on our current setup, we would have
+to give it a new name and then specify its exact shape using the same code as we
+did for `person`. For example:
 
 ```typescript
 let anotherPerson: {
@@ -252,9 +251,10 @@ let anotherPerson: {
 };
 ```
 
-This is not great, as this code would have to be copied and pasted every time
-I need this type of structure. TypeScript has 2 constructs to help with
-this issue: `interface` and `type`. Let's go over those now, starting with `interface`.
+This is not great, as this code would have to be copied and pasted every time I
+need this type of structure. TypeScript has 2 constructs to help with this
+issue: `interface` and `type`. Let's go over those now, starting with
+`interface`.
 
 To turn our `person` type declaration into a re-usable structure, we can define
 its shape using the `interface` feature of TypeScript:
@@ -268,12 +268,12 @@ interface Person {
 }
 ```
 
-When defining an `interface` it's important to note that the name of the interface,
-in this case `Person` is **not** a JavaScript variable. It is simply the name of the 
-shape declared on it, and we can now use the name as a type. 
+When defining an `interface` it's important to note that the name of the
+interface, in this case `Person` is **not** a JavaScript variable. It is simply
+the name of the shape declared on it, and we can now use the name as a type.
 
-We can use it as many times as we want to declare the type of any variable that needs 
-to follow the structure defined in the interface:
+We can use it as many times as we want to declare the type of any variable that
+needs to follow the structure defined in the interface:
 
 ```typescript
 let person: Person;
@@ -281,14 +281,15 @@ let anotherPerson: Person;
 let aThirdPerson: Person;
 ```
 
-As with explicitly typing a variable, TypeScript will tell us if any variables typed 
-with an interface don't respect the definition specified in that interface. 
+As with explicitly typing a variable, TypeScript will tell us if any variables
+typed with an interface don't respect the definition specified in that
+interface.
 
 ## Type Alias
 
-A type alias is similar to an interface, but varies in some key ways, which we will go
-over later. For now, let's look at the definition of a type alias for the same "Person"
-shape we've been working with:
+A type alias is similar to an interface, but varies in some key ways, which we
+will go over later. For now, let's look at the definition of a type alias for
+the same "Person" shape we've been working with:
 
 ```typescript
 type Person = {
@@ -363,7 +364,7 @@ HTML form. Create a file named `add.html` with the following code:
 
 This sets up a very basic HTML form with 2 input fields and a button. We will
 now write TypeScript code that will add the values in the 2 input fields when
-the button is clicked. Create a new file called `add.ts` in your `src` folder 
+the button is clicked. Create a new file called `add.ts` in your `src` folder
 and write the following:
 
 ```typescript
@@ -384,32 +385,32 @@ console.log(add(10, 20));
 
 Let's walk through this code:
 
-The first 3 lines of codes are to assign variables to the button and the
-input fields. As you may notice, instead of using type annotation (`:`) to
-declare the type, we're using the keyword `as`. This is called **type assertion**.
-Assertion is used when we have more information than TypeScript has available about 
-a type. 
+The first 3 lines of codes are to assign variables to the button and the input
+fields. As you may notice, instead of using type annotation (`:`) to declare the
+type, we're using the keyword `as`. This is called **type assertion**. Assertion
+is used when we have more information than TypeScript has available about a
+type.
 
-In this particular case, when using methods such as `document.getElementById`
-or `document.querySelector`, TypeScript can only assume that the element returned will
-be of type `HTMLElement`. As the developers of this mini application, though, we know 
-what exact HTML elements we're trying to select. So, we tell TypeScript to expect
-these elements by using type assertion.
+In this particular case, when using methods such as `document.getElementById` or
+`document.querySelector`, TypeScript can only assume that the element returned
+will be of type `HTMLElement`. As the developers of this mini application,
+though, we know what exact HTML elements we're trying to select. So, we tell
+TypeScript to expect these elements by using type assertion.
 
-Next in our code, you will notice that we're using the `!` notation, for example 
+Next in our code, you will notice that we're using the `!` notation, for example
 with the following expression: `button!.addEventListener(...)`. This is to tell
 TypeScript that we are confident that `button` will never be `null`. If we
 didn't do that, `tsc` would complain that the `button` variable might be null
-because it has no direct awareness of the HTML form we're getting this
-reference from.
+because it has no direct awareness of the HTML form we're getting this reference
+from.
 
-Lastly, the `button!.addEventListener()` function call tells the HTML that when this
-button is clicked, the `function` passed in as the second parameter should be called. 
-That function then takes the values from the first and the second `input` fields and 
-adds them together using our `add()` function.
+Lastly, the `button!.addEventListener()` function call tells the HTML that when
+this button is clicked, the `function` passed in as the second parameter should
+be called. That function then takes the values from the first and the second
+`input` fields and adds them together using our `add()` function.
 
-With that, the code we just created is syntactically correct, but will still
-not compile. Instead, `tsc` will give us the following error:
+With that, the code we just created is syntactically correct, but will still not
+compile. Instead, `tsc` will give us the following error:
 
 ```typescript
 error TS2345: Argument of type 'string' is not assignable to parameter of type 'number'.
@@ -438,9 +439,9 @@ renders TypeScript's type functionality basically useless because we now have an
 `add()` function that will accept parameters of any types. This defeats the
 purpose of using TypeScript in the first place.
 
-Instead of using the `any` type as a workaround, we can be more precise with union
-types and actually tell the `add()` function that we want it to accept either `number`
-parameters or `string` parameters:
+Instead of using the `any` type as a workaround, we can be more precise with
+union types and actually tell the `add()` function that we want it to accept
+either `number` parameters or `string` parameters:
 
 ```typescript
 function add(firstNumber: number | string, secondNumber: number | string) {
@@ -450,13 +451,14 @@ function add(firstNumber: number | string, secondNumber: number | string) {
 
 Let's examine this code:
 
-1. We are using the union type `|` notation to indicate that `firstNumber` can be of 
-   type `number` _or_ it can be of type `string`. Both types are acceptable for this
-   particular variable. We specify the same for `secondNumber`.
+1. We are using the union type `|` notation to indicate that `firstNumber` can
+   be of type `number` _or_ it can be of type `string`. Both types are
+   acceptable for this particular variable. We specify the same for
+   `secondNumber`.
 2. Since our variables could now be either `number` or `string`, we need to
    convert them before we can add them together. That's what the `+` in front of
-   `firstNumber` and `secondNumber` does. If the value is a `string`, it attempts to 
-   convert it to a number.
+   `firstNumber` and `secondNumber` does. If the value is a `string`, it
+   attempts to convert it to a number.
 
 Your code will now compile with the `tsc` command and you should be able to open
 `add.html` in your browser window, open your console and see the following
@@ -469,11 +471,11 @@ A "Union Type" then is a way to tell TypeScript that a variable can be of more
 than one type. This is a great alternative to using the `any` type, which, while
 flexible, negates the value of typing in TypeScript.
 
-> **Note**: Data validation in HTML is a complex subject that is beyond the scope 
-> of this particular section, so this example is incomplete. In reality, we would 
-> want to make sure that that values the user enters in these input fields are
-> actually numbers and we would want to display an error message if the user
-> entered incorrect values.
+> **Note**: Data validation in HTML is a complex subject that is beyond the
+> scope of this particular section, so this example is incomplete. In reality,
+> we would want to make sure that that values the user enters in these input
+> fields are actually numbers and we would want to display an error message if
+> the user entered incorrect values.
 
 ## Type Inference
 
@@ -503,17 +505,17 @@ console.log(addNumbers(x, 20));
 > **Note**: Type inference can be tricky because the wrong type could be
 > inferred if the first assignment to the variable is of the wrong type, which
 > would lead to errors that are difficult to track down. It is better practice
-> to be explicit about your types, as that is safer for the compiler and
-> is more explicit of your intent as the programmer, which is always key to
-> making your code more maintainable over time.
+> to be explicit about your types, as that is safer for the compiler and is more
+> explicit of your intent as the programmer, which is always key to making your
+> code more maintainable over time.
 
 ## Function Types
 
-One case in which it is generally better not to explicitly specify type, however,
-is with functions. 
+One case in which it is generally better not to explicitly specify type,
+however, is with functions.
 
-When typing functions, what we're actually typing is its return value. The syntax 
-is `function fnName(): type {}`. For example: 
+When typing functions, what we're actually typing is its return value. The
+syntax is `function fnName(): type {}`. For example:
 
 ```typescript
 function addExplicit(a: number, b: number): number {
@@ -523,14 +525,15 @@ function addExplicit(a: number, b: number): number {
 ```
 
 Generally, the return type of a function is easier and safer to infer with type
-inference because most functions do not (and should not) have many different return 
-statements. Functions that have returns statements are usually quite explicit about 
-the values they are constructing. Thus, you can usually get away with not typing 
-your functions and letting TypeScript infer the return type itself. 
+inference because most functions do not (and should not) have many different
+return statements. Functions that have returns statements are usually quite
+explicit about the values they are constructing. Thus, you can usually get away
+with not typing your functions and letting TypeScript infer the return type
+itself.
 
-> **Note**: When a function does not explicitly define a return type and does not have
-> a return statement, its return type is inferred to be `void`, which means the
-> caller of that function will not get a return value.
+> **Note**: When a function does not explicitly define a return type and does
+> not have a return statement, its return type is inferred to be `void`, which
+> means the caller of that function will not get a return value.
 
 ## Generics
 
@@ -557,14 +560,14 @@ The `insertAtBeginning()` function works for arrays of numbers, but will not
 work for arrays of strings or any other primitive or complex type.
 
 > **Note**: This function uses the "spread" operator `...` - this is an operator
-> (available in vanilla JavaScript) that takes the value of an existing array 
-> and returns all existing elements of that array. In our example, this means 
-> that `newArray` is initialized to an array that contains first `value` and 
+> (available in vanilla JavaScript) that takes the value of an existing array
+> and returns all existing elements of that array. In our example, this means
+> that `newArray` is initialized to an array that contains first `value` and
 > then every entry in the `array` variable.
 
-One way to change the `insertAtBeginning()` function is to change the type of the
-array and the variable to `any`. But as we've seen before, this takes away our ability 
-to use TypeScript's type validation functionality.
+One way to change the `insertAtBeginning()` function is to change the type of
+the array and the variable to `any`. But as we've seen before, this takes away
+our ability to use TypeScript's type validation functionality.
 
 Generics are a better solution for this problem. Instead of specifying a
 specific type, we can actually specify a "generic" type, and the caller of the
@@ -624,9 +627,10 @@ but that retain TypeScript's ability to enforce proper usage of types.
 
 ## Classes
 
-Classes, as you may know from vanilla JavaScript, are simply another way to define 
-a reusable shape we want objects to take. Unlike interfaces and type aliases, classes 
-have the added benefit of being able to assign default values and behavior to those shapes:
+Classes, as you may know from vanilla JavaScript, are simply another way to
+define a reusable shape we want objects to take. Unlike interfaces and type
+aliases, classes have the added benefit of being able to assign default values
+and behavior to those shapes:
 
 ```typescript
 class Student {
@@ -664,24 +668,24 @@ This `Student` class has several attributes, as we've seen before with
 2. Two functions that can be called on any object of this type. These functions
    can then implement functionality that will be available and standard for all
    objects instantiated from this class.
-3. A `private` member variable. Private member variables, in this case `courses`, 
-   are not accessible outside the code in this class. This allows us to have
-   "internal" state that can be changed without affecting the users of this
-   class.
+3. A `private` member variable. Private member variables, in this case
+   `courses`, are not accessible outside the code in this class. This allows us
+   to have "internal" state that can be changed without affecting the users of
+   this class.
 
-To use a class as a blueprint, we declare a new variable and set it to a new 
+To use a class as a blueprint, we declare a new variable and set it to a new
 instance of the class. We must also provide any required parameters in the order
-they were defined. 
+they were defined.
 
 ```typescript
 const alayna = new Student("Alayna", "Cooke", 20, ["Intro to Computer Science"]);
 ```
 
-If we were to pass in a parameter with the wrong type, for example providing `"20"`
-as a string instead of `20` as a number, TypeScript would throw an error: 
+If we were to pass in a parameter with the wrong type, for example providing
+`"20"` as a string instead of `20` as a number, TypeScript would throw an error:
 
-> **Note**: In this example, TypeScript would infer that the variable `alayna` is 
-> of type `Student`. 
+> **Note**: In this example, TypeScript would infer that the variable `alayna`
+> is of type `Student`.
 
 ```bash
 error TS2345: Argument of type 'string' is not assignable to parameter of type 'number'.
@@ -689,15 +693,16 @@ error TS2345: Argument of type 'string' is not assignable to parameter of type '
      const Alayna = new Student("Alayna", "Cooke", "20", ["Intro to Computer Science"]); 
 ```
 
-While everything we've learned about classes is already handy, you may have noticed that 
-our example seems to have a lot of redundant code. First, we define all the properties we 
-expect our class to have and their types. Then, we define those same properties and 
-types in the parameters of the `constructor`. Finally, we define the actual properties
-themselves based off the parameters and defaults. 
+While everything we've learned about classes is already handy, you may have
+noticed that our example seems to have a lot of redundant code. First, we define
+all the properties we expect our class to have and their types. Then, we define
+those same properties and types in the parameters of the `constructor`. Finally,
+we define the actual properties themselves based off the parameters and
+defaults.
 
-Thankfully, TypeScript gives us a shorthand for defining properties and their types, 
-including private members, by just using the constructor. The following code is functionally
-equivalent to the code above:
+Thankfully, TypeScript gives us a shorthand for defining properties and their
+types, including private members, by just using the constructor. The following
+code is functionally equivalent to the code above:
 
 ```typescript
 class Student {
@@ -722,32 +727,36 @@ class Student {
 }
 ```
 
-We still had to define the `role` property's type outside of the constructor as we want it to
-have a set, default value. This is also why we still define its value within the `constructor`
-method. The other properties don't have to be defined within the `constructor` as the shorthand 
-will use the names given to them in the parameters as their property name. 
+We still had to define the `role` property's type outside of the constructor as
+we want it to have a set, default value. This is also why we still define its
+value within the `constructor` method. The other properties don't have to be
+defined within the `constructor` as the shorthand will use the names given to
+them in the parameters as their property name.
 
-Properties marked as `public` are the opposite of `private`, meaning they are accessible outside
-of the class itself. It is the default membership for class properties and normally does not have 
-to be explicitly defined. However, when using this shorthand you _must_ provide the `public`
-membership for it to work correctly. 
+Properties marked as `public` are the opposite of `private`, meaning they are
+accessible outside of the class itself. It is the default membership for class
+properties and normally does not have to be explicitly defined. However, when
+using this shorthand you _must_ provide the `public` membership for it to work
+correctly.
 
-> **Note**: There are other modifiers aside from `public` and `private` that can be attached 
-> to class properties. Take a look at the Member Visibility and readonly documentation linked
-> in the Resources section below if you're interested in learning about them. 
+> **Note**: There are other modifiers aside from `public` and `private` that can
+> be attached to class properties. Take a look at the Member Visibility and
+> readonly documentation linked in the Resources section below if you're
+> interested in learning about them.
 
-## Conclusion 
+## Conclusion
 
-We just learned a lot, and even then we have only scratched the surface of what TypeScript has
-to offer. While all this information may be overwhelming, it's important to remember no one 
-is expected to be an expert in anything after just one lesson. We simply want you to know 
-these features exist, and we will practice them more as we move into learning about React. 
+We just learned a lot, and even then we have only scratched the surface of what
+TypeScript has to offer. While all this information may be overwhelming, it's
+important to remember no one is expected to be an expert in anything after just
+one lesson. We simply want you to know these features exist, and we will
+practice them more as we move into learning about React.
 
-TypeScript adds a lot of functionality that JavaScript simply lacks. Though it mitigates 
-the loose nature of JavaScript that some may find easier or quicker to work in, it certainly 
-makes it more maintainable and robust.
+TypeScript adds a lot of functionality that JavaScript simply lacks. Though it
+mitigates the loose nature of JavaScript that some may find easier or quicker to
+work in, it certainly makes it more maintainable and robust.
 
-## Resources 
+## Resources
 
 - [TypeScript Documentation](https://www.typescriptlang.org/docs/)
 - [Differences Between Type Aliases and Interfaces](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces)
