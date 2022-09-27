@@ -1,4 +1,4 @@
-# TypeScript Features
+# TypeScript Features, Continued
 
 ## Learning Goals
 
